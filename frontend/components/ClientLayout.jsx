@@ -1,9 +1,9 @@
 "use client"
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
-import Navbar from "@/components/navbar"
+import Navbar from "@/components/Navbar"
 
-import Footer from "@/components/footer"
+import Footer from "@/components/Footer"
 import { Toaster } from "react-hot-toast"
 
 const ClientLayout = ({ children }) => {
