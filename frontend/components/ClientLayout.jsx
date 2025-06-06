@@ -1,6 +1,5 @@
 "use client"
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
 import Navbar from "@/components/Navbar"
 
 import Footer from "@/components/Footer"
@@ -16,7 +15,7 @@ const ClientLayout = ({ children }) => {
           <main className="flex-1 p-4 lg:p-6 overflow-y-auto overflow-x-hidden mt-12">
             {children}
           </main>
-          <Footer />
+          <Footer/>
         </SidebarInset>
         <Toaster position="bottom-right" reverseOrder={false} />
       </SidebarProvider>
