@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "NODE_OPTIONS=--max_old_space_size=7168 next build",
+    "build": "cross-env NODE_OPTIONS=--max_old_space_size=7168 next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "tailwindcss": "^4",
