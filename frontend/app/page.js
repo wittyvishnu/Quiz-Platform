@@ -1,32 +1,16 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Users, BarChart3, Zap, Shield, Globe, Star, Play, Menu, X } from "lucide-react"
 import Footer from "@/components/Footer"
-import { useEffect } from "react";
 
 export default function HomePage() {
   const router = useRouter()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_Backend_URL}/test`);
-      
-      const data = await response.json();
-      console.log(data); 
-    } catch (error) {
-      console.log("Fetch error:", error);
-    }
-  };
-  fetchData();
-}, []); 
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const features = [
     {
