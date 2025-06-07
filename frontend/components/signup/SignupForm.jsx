@@ -277,7 +277,7 @@ export default function SignupForm() {
       return
     }
     try {
-      const response = await fetch("http://localhost:5000/api/auth/request-otp", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_Backend_URL}/auth/request-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email }),
@@ -307,7 +307,7 @@ export default function SignupForm() {
       return
     }
     try {
-      const response = await fetch("http://localhost:5000/api/auth/verify-otp", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_Backend_URL}auth/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email, otp }),
