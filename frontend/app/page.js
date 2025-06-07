@@ -24,7 +24,6 @@ useEffect(() => {
       console.log("Fetch error:", error);
     }
   };
-
   fetchData();
 }, []); 
 
