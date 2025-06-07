@@ -77,9 +77,9 @@ export default function Dashboard() {
   }
 
   const QuizSkeleton = () => (
-    <div className="group relative bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className="group relative bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full">
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
-      <div className="p-8 space-y-6">
+      <div className="p-6 md:p-8 space-y-4 md:space-y-6">
         <div className="space-y-4">
           <div className="flex items-start justify-between">
             <div className="flex-1">
@@ -108,32 +108,31 @@ export default function Dashboard() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6">
-      <div className="max-w-5xl mx-auto">
-        {/* Header Section */}
-        <div className="mb-12">
-          <div className="text-center mb-8">
-            <h1 className="text-6xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-              Quiz Dashboard
-            </h1>
-            <p className="text-gray-600 text-xl">Create and manage your interactive quizzes</p>
-          </div>
-
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-4 sm:p-6 lg:p-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section - Revised */}
+        <div className="mb-10 sm:mb-12 lg:mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 sm:mb-8">
+            <div className="text-center sm:text-left">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2 sm:mb-3 tracking-tight">
+                Quiz Dashboard
+              </h1>
+              <p className="text-gray-600 text-base sm:text-lg lg:text-xl">
+                Create and manage your interactive quizzes
+              </p>
+            </div>
             <Button
               onClick={() => router.push("/dashboard/create-quiz")}
-              className="relative w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white rounded-full py-6 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
-              size="lg"
+              className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white rounded-full py-2 px-4 sm:py-3 sm:px-6 lg:py-4 lg:px-8 text-sm sm:text-base lg:text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             >
-              <Plus className="w-6 h-6 mr-3" />
-              Create New Quiz
-              <Zap className="w-5 h-5 ml-3" />
+              <Plus className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+              <span>Create New Quiz</span>
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
             </Button>
           </div>
         </div>
 
-        {/* Quizzes Section */}
+        {/* Quizzes Section - Unchanged */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-8">
             <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl">
@@ -150,8 +149,8 @@ export default function Dashboard() {
           </div>
 
           {loading ? (
-            <div className="space-y-8">
-              {Array.from({ length: 2 }).map((_, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 3 }).map((_, index) => (
                 <QuizSkeleton key={index} />
               ))}
             </div>
@@ -177,44 +176,44 @@ export default function Dashboard() {
               </div>
             </div>
           ) : (
-            <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {quizzes.map((quiz, index) => (
                 <div
                   key={quiz.id}
-                  className="group relative bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                  className="group relative bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col"
                 >
                   {/* Gradient Top Border */}
                   <div
                     className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${getRandomGradient(index)}`}
                   ></div>
 
-                  <div className="p-8 space-y-6">
+                  <div className="p-6 md:p-8 space-y-4 md:space-y-6 flex-1 flex flex-col">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-indigo-600 transition-colors duration-300">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 group-hover:text-indigo-600 transition-colors duration-300 line-clamp-2">
                           {quiz.title}
                         </h3>
-                        <div className="flex items-center gap-6 text-gray-500">
-                          <div className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full">
+                        <div className="flex flex-wrap items-center gap-3 md:gap-6 text-gray-500">
+                          <div className="flex items-center gap-2 bg-gray-50 px-3 py-1 rounded-full">
                             <Calendar className="w-4 h-4" />
-                            <span className="font-medium">{formatDate(quiz.created_at)}</span>
+                            <span className="font-medium text-sm">{formatDate(quiz.created_at)}</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span className="font-medium text-green-600">Active</span>
+                            <span className="font-medium text-green-600 text-sm">Active</span>
                           </div>
                         </div>
                       </div>
-                      <Badge className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-0 px-4 py-2 text-sm font-semibold">
-                        <TrendingUp className="w-4 h-4 mr-1" />
+                      <Badge className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-0 px-3 py-1 text-xs font-semibold">
+                        <TrendingUp className="w-3 h-3 mr-1" />
                         Live
                       </Badge>
                     </div>
 
                     {/* URL Section with Enhanced Design */}
-                    <div className="relative group/url">
+                    <div className="relative group/url flex-1 my-2">
                       <div className="absolute -inset-1 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl blur opacity-25 group-hover/url:opacity-40 transition duration-300"></div>
-                      <div className="relative bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-4 flex items-center gap-4 border border-gray-200">
+                      <div className="relative bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-3 md:p-4 flex items-center gap-3 md:gap-4 border border-gray-200 h-full">
                         <div className="flex-1 overflow-hidden">
                           <div className="flex items-center gap-2 mb-1">
                             <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
@@ -229,7 +228,9 @@ export default function Dashboard() {
                               msOverflowStyle: "none",
                             }}
                           >
-                            <p className="text-gray-700 whitespace-nowrap pr-2 font-mono text-sm">{quiz.public_url}</p>
+                            <p className="text-gray-700 whitespace-nowrap pr-2 font-mono text-xs md:text-sm">
+                              {quiz.public_url}
+                            </p>
                           </div>
                         </div>
                         <Button
@@ -239,35 +240,35 @@ export default function Dashboard() {
                             e.stopPropagation()
                             copyToClipboard(quiz.public_url)
                           }}
-                          className="h-10 w-10 p-0 text-indigo-600 hover:bg-indigo-100 flex-shrink-0 rounded-lg transition-all duration-200 hover:scale-110"
+                          className="h-8 w-8 md:h-10 md:w-10 p-0 text-indigo-600 hover:bg-indigo-100 flex-shrink-0 rounded-lg transition-all duration-200 hover:scale-110"
                           title="Copy URL"
                         >
-                          <Copy className="w-5 h-5" />
+                          <Copy className="w-4 h-4 md:w-5 md:h-5" />
                         </Button>
                       </div>
                     </div>
 
                     {/* Action Buttons with Enhanced Design */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-3 md:gap-4 mt-auto">
                       <Button
                         variant="outline"
-                        className="flex-1 border-2 border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:border-indigo-300 rounded-xl py-4 text-lg font-semibold transition-all duration-300 hover:shadow-lg group/btn"
+                        className="flex-1 border-2 border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:border-indigo-300 rounded-xl py-2 md:py-4 text-sm md:text-base font-semibold transition-all duration-300 hover:shadow-lg group/btn"
                         onClick={() => router.push(`/dashboard/quiz/${quiz.id}`)}
                       >
-                        <Eye className="w-5 h-5 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
-                        View Quiz
+                        <Eye className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
+                        View
                       </Button>
                       <Button
-                        className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-xl py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] group/btn"
+                        className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-xl py-2 md:py-4 text-sm md:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] group/btn"
                         onClick={() => router.push(`/dashboard/quiz/${quiz.id}/responses`)}
                       >
-                        <BarChart3 className="w-5 h-5 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
+                        <BarChart3 className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
                         Responses
-                        <Users className="w-4 h-4 ml-2" />
                       </Button>
                     </div>
 
-                   
+                    {/* Stats Preview */}
+                    
                   </div>
                 </div>
               ))}
