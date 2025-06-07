@@ -277,7 +277,7 @@ export default function SignupForm() {
       return
     }
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_Backend_URL}/auth/request-otp`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_Backend_URL}/api/auth/request-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email }),

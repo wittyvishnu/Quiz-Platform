@@ -18,7 +18,7 @@ export default function ProtectedRoute({ children }) {
       }
 
       try {
-        const res = await fetch("http://localhost:5000/api/auth/verify-token", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_Backend_URL}/api/auth/verify-token`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`
